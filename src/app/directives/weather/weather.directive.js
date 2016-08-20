@@ -1,8 +1,8 @@
-function weatherDirective() {
+function weatherDirective(WeatherHandler) {
   let directive = {
     restrict: 'E',
     transclude: false,
-    template: "<div><h1>Cidade escolhida é: {{result.city}}</h1><div>Temperatura atual: {{result.temp}}ºC</div></div>",
+    template: getTemplate(),
     scope: {
       config : "="
     },
@@ -10,20 +10,23 @@ function weatherDirective() {
   }
 
   function linkFunc(scope, element) {
+      scope.handler = new WeatherHandler(scope);
       // default values to initialize the directive
       scope.state = "SC";
       scope.city = "Blumenau";
       scope.unit = "C";
       initialize();
-      
+
       scope.$watch('config', function (newValue, oldValue) {
-        scope.config = newValue;
-        reInitialize();
+        if (newValue) {
+          scope.config = newValue;
+          reInitialize();
+        }
       });
 
       function success(result) {
         scope.$applyAsync(function () {
-          scope.result = result;
+          scope.weatherInfo = result;
         });
       };
 
@@ -32,7 +35,7 @@ function weatherDirective() {
       };
 
       function initialize() {
-        let location = `'${scope.city}, ${scope.uf}'`;
+        let location = `'${scope.city},${scope.state}'`;
         let unit = scope.unit;
         $.simpleWeather({location, unit, success, error});
       }
@@ -55,6 +58,19 @@ function weatherDirective() {
       }
   }
 
+  function getTemplate() {
+
+    let template = `
+      <div>
+        <h1>Cidade escolhida é: {{weatherInfo.city}}</h1>
+        <div>Temperatura atual: {{weatherInfo.temp}}º{{unit}}</div>
+        <div>A Máxima para hoje é: {{handler.getMaximumTemperature()}}º{{unit}}</div>
+        <div>A Mínima para hoje é: {{handler.getMinimumTemperature()}}º{{unit}}</div>
+      </div>
+    `
+
+    return template;
+  }
 
   return directive;
 }

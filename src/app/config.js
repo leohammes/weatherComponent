@@ -13,4 +13,5 @@ app.controller('mainController', function($scope, $templateCache) {
 
 // Internal directives
 app.directive('weather', weatherDirective);
+app.factory('WeatherHandler', WeatherHandler);
 autocomplete.directive('ngAutocomplete', ngAutocomplete);
