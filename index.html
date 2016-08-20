@@ -1,0 +1,29 @@
+<html ng-app="wheaterComponent">
+  <head>
+    <meta charset="UTF-8">
+    <title>Weather Component</title>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="./src/app/styles/3rdparty/bootstrap.min.css"></link>
+    <!-- AP I's -->
+    <script src="./src/3rdparty/jquery/jquery.min.js"></script>
+    <script src="./src/3rdparty/angular/angular.min.js"></script>
+    <script src="./src/3rdparty/simply-weather/simple-weather.min.js"></script>
+    <script src="./src/3rdparty/cidades-estados/cidades-estados.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+    <!-- Directives -->
+    <script src="./src/app/directives/weather.directive.js"></script>
+    <script src="./src/app/directives/auto-complete.directive.js"></script>
+    <script src="./src/app/config.js"></script>
+
+  </head>
+  <body>
+    <div class="main" ng-controller="mainController">
+      <div class="form-group move-down">
+          <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="selectedValue" details="details" options="options"/>
+      </div>
+      <weather config="details"></weather>
+    </div>
+  </body>
+</html>
