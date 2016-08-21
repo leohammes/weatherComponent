@@ -2,14 +2,18 @@
   <head>
     <meta charset="UTF-8">
     <title>Weather Component</title>
+    <meta name="viewport" content="initial-scale=0.7, user-scalable=yes" />
 
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="./src/app/styles/3rdparty/bootstrap.min.css"></link>
     <!-- AP I's -->
     <script src="./src/3rdparty/jquery/jquery.min.js"></script>
     <script src="./src/3rdparty/angular/angular.min.js"></script>
+    <script src="./src/3rdparty/angular/angular-animate.min.js"></script>
+		<script src="./src/3rdparty/angular/angular-aria.min.js"></script>
+		<script src="./src/3rdparty/angular/angular-messages.min.js"></script>
+		<script src="./src/3rdparty/angular/angular-material.min.js"></script>
+    <script src="./src/3rdparty/bootstrap/ui-bootstrap.tpl.min.js"></script>
+    <script src="./src/3rdparty/chartJS/Chart.min.js"></script>
     <script src="./src/3rdparty/simply-weather/simple-weather.min.js"></script>
-    <script src="./src/3rdparty/cidades-estados/cidades-estados.js"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
     <!-- Directives -->
@@ -18,11 +22,24 @@
     <script src="./src/app/directives/autocomplete/auto-complete.directive.js"></script>
     <script src="./src/app/config.js"></script>
 
+    <!-- Stylescheets-->
+    <link rel="stylesheet" type="text/css" href="./src/app/styles/3rdparty/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="./src/app/styles/3rdparty/angular-material.min.css"></link>
+    <link rel="stylesheet" href="./src/app/styles/autocomplete/autocomplete.css"></link>
+    <link rel="stylesheet" href="./src/app/styles/weather/weather.css"></link>
+    <link rel="stylesheet" href="./src/app/styles/index.css"></link>
+    <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'></link>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./src/app/images/weather.ico"></link>
   </head>
   <body>
     <div class="main" ng-controller="mainController">
-      <div class="form-group move-down">
-          <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="selectedValue" details="details" options="options"/>
+      <div class="header">
+        <div class="form-group move-down">
+            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="selectedValue" details="details" options="options"/>
+            <div class="icon-ball" title="Salvar o local"><span ng-click="saveLocal()" style="font-size: 2em; padding-left: 4px;" class="bookmark">&#9733;</span></div>
+        </div>
       </div>
       <weather config="details"></weather>
     </div>

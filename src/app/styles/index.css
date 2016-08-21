@@ -1,0 +1,60 @@
+html {
+  font-family: 'Muli', sans-serif;
+}
+
+body {
+  background-color: #64B5F6;
+}
+
+@media all and (max-width: 1000px) {
+  .header {
+    background-position: right -100px !important;
+	}
+}
+
+@media all and (max-width: 560px) {
+  .header {
+    background-position: right 0px !important;
+	}
+}
+
+.header {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  background: #64B5F6;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right -300px;
+}
+
+.form-group {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.form-group .form-control {
+  width: 80%;
+}
+
+.form-group span.bookmarked {
+  color: #FFC107;
+}
+
+.form-group .icon-ball {
+  display: flex;
+  background: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin: 0;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.form-group span.bookmark {
+  cursor: pointer;
+}

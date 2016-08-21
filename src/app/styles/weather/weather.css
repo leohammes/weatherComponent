@@ -1,0 +1,73 @@
+@media all and (max-width: 560px) {
+  .second-box md-card {
+    max-width: 350px;
+  }
+}
+
+weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-content {
+  width: 100%;
+  background-color: #64B5F6;
+}
+
+.weather-content .actual {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.weather-content .actual img {
+  height: 100px;
+}
+
+weather .first-box .min,
+weather .first-box .max {
+  font-size: 6em;
+}
+
+weather .max span {
+  color: red;
+  font-size: 2em;
+}
+
+weather .min span {
+  color: blue;
+  font-size: 2em;
+}
+
+.boxes-area {
+  justify-content: center;
+  flex-wrap: wrap;
+  display: flex;
+  width: 100%;
+}
+
+.box {
+  min-height: 500px;
+  min-width: 400px;
+  width: 33%;
+}
+
+.third-box,
+.first-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.second-box {
+  display: flex;
+  justify-content: center;
+}
+
+.second-box .inner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
