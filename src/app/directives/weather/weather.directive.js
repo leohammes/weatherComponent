@@ -45,7 +45,6 @@ function weatherDirective(WeatherHandler) {
           scope.low = newValue.low;
           scope.high = newValue.high;
           scope.currentDate = newValue.date;
-          scope.$applyAsync();
         }
       })
   }
@@ -76,6 +75,7 @@ function weatherDirective(WeatherHandler) {
     `;
   }
 
+  /* Unfortunately, without application's server, i can not put this template into a external HTML file */
   function getTemplate() {
     let beachCardTemplate = getCardTemplateOf('beach');
     let houseCardTemplate = getCardTemplateOf('house');

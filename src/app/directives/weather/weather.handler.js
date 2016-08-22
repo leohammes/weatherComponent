@@ -34,6 +34,20 @@ function WeatherHandler() {
       }
     }
 
+    this.isGoodToGoToTheBeach = function() {
+      if (scope.weatherInfo) {
+        let goodWeatherCodes = [44, 36, 34, 32, 30, 26] // partly cloudy, hot, sunny, partly cloudy (day), cloudy
+        let goodWeather = goodWeatherCodes.filter(function(element, index) { if (element == scope.weatherInfo.code) { return true } })
+        return (angular.isDefined(goodWeather[0]) && scope.weatherInfo.temp > 25);
+      }
+    }
+
+    this.openLink = function() {
+      if (scope.weatherInfo) {
+        window.open(scope.weatherInfo.link, '_blank');
+      }
+    }
+
     this.initialize = function() {
       let location = `'${scope.city},${scope.state}'`;
       let unit = 'C';
@@ -55,20 +69,6 @@ function WeatherHandler() {
         });
 
         scope.handler.initialize();
-      }
-    }
-
-    this.isGoodToGoToTheBeach = function() {
-      if (scope.weatherInfo) {
-        let goodWeatherCodes = [44, 36, 34, 32, 30, 26] // partly cloudy, hot, sunny, partly cloudy (day), cloudy
-        let goodWeather = goodWeatherCodes.filter(function(element, index) { if (element == scope.weatherInfo.code) { return true } })
-        return (angular.isDefined(goodWeather[0]) && scope.weatherInfo.temp > 25);
-      }
-    }
-
-    this.openLink = function() {
-      if (scope.weatherInfo) {
-        window.open(scope.weatherInfo.link, '_blank');
       }
     }
 
