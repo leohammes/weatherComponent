@@ -35,11 +35,9 @@ function WeatherHandler() {
     }
 
     this.initialize = function() {
-      if (scope.config) {
-        let location = `'${scope.city},${scope.state}'`;
-        let unit = 'C';
-        $.simpleWeather({location, unit, success, error});
-      }
+      let location = `'${scope.city},${scope.state}'`;
+      let unit = 'C';
+      $.simpleWeather({location, unit, success, error});
     }
 
     this.restart = function() {

@@ -45,6 +45,7 @@ function weatherDirective(WeatherHandler) {
           scope.low = newValue.low;
           scope.high = newValue.high;
           scope.currentDate = newValue.date;
+          scope.$applyAsync();
         }
       })
   }
