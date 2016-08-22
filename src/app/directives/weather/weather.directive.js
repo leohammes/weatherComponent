@@ -17,7 +17,6 @@ function weatherDirective(WeatherHandler) {
   }
 
   function linkFunc(scope, element) {
-      scope.selectedOption = "";
       // default values to initialize the directive
       let savedData = localStorage.weatherForecastLocal;
       if (angular.isDefined(savedData)) {
@@ -82,15 +81,20 @@ function weatherDirective(WeatherHandler) {
     let template = `
       <div class="weather-content">
         <div class="actual">
-          <img title="{{weatherInfo.currently}}" src="{{weatherInfo.image}}"/>
           <h1 title="Weather now">{{city}}, {{state}} {{weatherInfo.temp}}ºC</h1>
         </div>
         <div class="boxes-area">
           <div class="box first-box">
-            <md-select placeholder="Select the day" ng-model="selectedOption"><md-option ng-repeat="item in weatherInfo.forecast" ng-value="item">{{item.date}}</md-option></md-select>
-            <h1>{{currentDate}}</h1>
-            <div class="max" title="Max of the day"><span>&#8593;</span>{{high}}º{{unit}}</div>
-            <div class="min" title="Min of the day"><span>&#8595;</span>{{low}}º{{unit}}</div>
+            <md-select class="listbox" placeholder="Select the day" ng-model="selectedOption"><md-option ng-repeat="(index, item) in weatherInfo.forecast" ng-selected="index == 0" ng-value="item">{{item.date}}</md-option></md-select>
+            <div class="inner-content">
+              <div class="image-area">
+                <img title="{{selectedOption.text}}" src="{{selectedOption.image}}"/>
+              </div>
+              <div class="temperatures-area">
+                <div class="max" title="Max of the day"><span>&#8593;</span>{{high}}º{{unit}}</div>
+                <div class="min" title="Min of the day"><span>&#8595;</span>{{low}}º{{unit}}</div>
+              </div>
+            </div>
           </div>
           <div class="box second-box" ng-class="{'beach': handler.isGoodToGoToTheBeach(), 'house': !handler.isGoodToGoToTheBeach()}">
             <div class="inner-content" ng-if="handler.isGoodToGoToTheBeach()">

@@ -61,6 +61,25 @@ weather .min span {
   justify-content: center;
 }
 
+.first-box .inner-content {
+  display: flex;
+}
+
+.first-box .inner-content .image-area {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.first-box .inner-content .temperatures-area {
+  margin-left: -95px;
+}
+
+.first-box .listbox {
+  width: 200px;
+  height: 50px;
+}
+
 .second-box {
   display: flex;
   justify-content: center;
